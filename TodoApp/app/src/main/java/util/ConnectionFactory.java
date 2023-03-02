@@ -2,7 +2,8 @@ package util;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-
+import java.lang.RuntimeException;  
+        
 public class ConnectionFactory {
 
     public static final String DRIVER = "com.mysql.jdbc.Driver";
@@ -15,7 +16,7 @@ public class ConnectionFactory {
             Class.forName(DRIVER);
             return DriverManager.getConnection(URL, USER, PASS);
         } catch (Exception ex) {
-                throw new RunTimeException("Erro na conexão com o banco de dados", ex);
+                throw new RuntimeException("Erro na conexão com o banco de dados", ex);
             
         }    
     }
@@ -26,7 +27,7 @@ public class ConnectionFactory {
                 connection.close();
             }
         } catch (Exception ex) {
-            throw new RunTimeException("Erro ao fechar a conexão com o banco de dados", ex);
+            throw new RuntimeException("Erro ao fechar a conexão com o banco de dados", ex);
         }
     }
 
